@@ -1,0 +1,64 @@
+﻿@model List<BioTrananDomain.Models.Showing>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body>
+<div class="text-center">
+    <h1 class="display-4">Welcome to Bio Tranan</h1>
+    <p>@ViewBag.Joke</p>
+</div>
+
+<h2>Showing Schedule</h2>
+<div>
+    @if (Model.Count == 0)
+    {
+        <p>Come back another time! No showings scheduled! :(</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var showing in @Model)
+            {
+                <li>
+                    <ul>
+                        <li>
+                            <b>Movie name:</b> @showing.ShowingMovie.MovieName
+                            <input type="button"
+                                   value="Movie Details"
+                                   class="link link-dark"
+                                   onclick="location.href= '@Url.Action("GetMovie", "Movie", new { id = showing.ShowingMovie.Id })'"/>
+                        </li>
+                        <li>
+                            <b>Seats left:</b> @showing.SeatsLeft left out of @showing.ShowingSalon.SalonSeatAmount
+                        </li>
+                        <li>
+                            <b>Salon:</b> @showing.ShowingSalon.SalonName
+                        </li>
+                        <li>
+                            <b>Start time (GMT+2):</b> @showing.ShowingDateAndTime
+                        </li>
+                    </ul>
+                    @if (showing.SeatsLeft < 1)
+                    {
+                        <input type="button"
+                               class="btn btn-danger"
+                               value="Sold out!"/>
+                    }
+                    else
+                    {
+                        <input type="button"
+                               value="Create Reservation"
+                               class="btn btn-primary"
+                               onclick="location.href= '@Url.Action("GetBooking", "Booking", new { id = showing.Id })'"/>
+                    }
+                    <p></p>
+                </li>
+            }
+        </ul>
+    }
+
+    <img src="/CATS-AND-POPCORN.jpg"/>
+</div>
+</body>

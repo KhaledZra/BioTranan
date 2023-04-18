@@ -1,0 +1,25 @@
+@model bool
+
+@{
+    ViewBag.Title = "Reservation cancel result";
+    Layout = "_Layout";
+}
+
+<h2>Reservation cancel result:</h2>
+@if (!Model)
+{
+    <p>
+        No found match for your given Id, If you have forgotten your Id. You can't cancel!
+    </p>
+}
+else
+{
+    <p>
+        Successfully cancelled your reservation! Come again!
+    </p>
+}
+<br/>
+<input type="button"
+       value="Go Back"
+       class="btn btn-primary"
+       onclick="location.href='@Url.Action("Index", "Home")'"/>

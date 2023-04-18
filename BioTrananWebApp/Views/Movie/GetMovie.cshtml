@@ -1,0 +1,42 @@
+@model BioTrananDomain.Models.Movie
+
+@{
+    ViewBag.Title = "Movie Details";
+    Layout = "_Layout";
+}
+
+<body>
+<h2>Movie Details:</h2>
+<div>
+    @if (@Model == null)
+    {
+        <p>No result for search! :(</p>
+    }
+    else
+    {
+        <ul>
+            <li>
+                <b>Movie name:</b> @Model.MovieName
+            </li>
+            <li>
+                <b>Movie Length: </b>@Model.MovieLengthInMinutes minutes<br/>
+                <b>Movie Trailer:</b><br/>
+                <iframe width="560"
+                        height="315"
+                        src="@Model.MovieEmbeddedTrailerUrl"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+
+            </li>
+        </ul>
+    }
+</div>
+<div>
+    <input type="button"
+           value="Go Back"
+           class="btn btn-primary"
+           onclick="location.href='@Url.Action("Index", "Home")'" />
+</div>
+</body>

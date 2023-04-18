@@ -1,0 +1,36 @@
+@model BioTrananDomain.Models.Showing
+
+@{
+    ViewBag.Title = "Create Booking";
+    Layout = "_Layout";
+}
+
+<h2>Create reservation:</h2>
+
+<body>
+<div>
+    <p>
+        Creating booking for movie: @Model.ShowingMovie.MovieName
+    </p>
+</div>
+<div>
+    @using (Html.BeginForm())
+    {
+        <div>
+            <input type="text" id="Id" value="@Model.Id" hidden="hidden"/>
+            Email: <input type="email" id="Email" name="Email" value=""><br/>
+            Seats: <input type="number" id="Seats" name="Seats" value=""><br/>
+        </div>
+        <div>
+            <br/>
+            <input type="button"
+                   value="Go Back"
+                   class="btn btn-primary"
+                   onclick="location.href='@Url.Action("Index", "Home")'"/>
+            
+            <input type="submit"
+                   class="btn btn-primary"/>
+        </div>
+    }
+</div>
+</body>

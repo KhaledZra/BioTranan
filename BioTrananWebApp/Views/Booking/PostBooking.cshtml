@@ -1,0 +1,29 @@
+@model BioTrananDomain.Models.Reservation
+
+@{
+    ViewBag.Title = "Reservation Confirmation";
+    Layout = "_Layout";
+}
+
+<body>
+@if (Model != null)
+{
+    <div>
+        <h2>Thank you for your reservation!</h2>
+        <p>Reservation created for: @Model.ReservationShowing.ShowingMovie.MovieName</p>
+        <p>Please remember your reservation Id: @Model.Id</p>
+    </div>
+}
+else
+{
+    <div>
+        <h2>Error, Please fill out the form!</h2>
+    </div>
+}
+<div>
+    <input type="button"
+           value="Go Back to home"
+           class="btn btn-primary"
+           onclick="location.href='@Url.Action("Index", "Home")'"/>
+</div>
+</body>

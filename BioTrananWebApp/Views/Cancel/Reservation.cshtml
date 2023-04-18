@@ -1,0 +1,23 @@
+@{
+    ViewBag.Title = "Cancel";
+    Layout = "_Layout";
+}
+
+<h2>Booking Cancellation:</h2>
+<p>Enter your Reservation Id: </p>
+@using (Html.BeginForm())
+{
+    <div>
+        Reservation Id: <input type="text" id="Id" name="Id" value=""><br/>
+    </div>
+    <div>
+        <br/>
+        <input type="button"
+               value="Go Back"
+               class="btn btn-primary"
+               onclick="location.href='@Url.Action("Index", "Home")'"/>
+
+        <input type="submit"
+               class="btn btn-primary"/>
+    </div>
+}
